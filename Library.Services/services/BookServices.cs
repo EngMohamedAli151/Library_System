@@ -15,6 +15,8 @@ namespace Library.Services.services
     public class BookServices : GenircServices<LibraryDbContext, IBookRepository, Book>, IBookServices
 
     {
+
+        // this is  book service
         private readonly IUnitOfWork <LibraryDbContext>_unitOfWork;
         private readonly IBookRepository _bookRepository;
         
