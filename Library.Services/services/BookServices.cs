@@ -16,7 +16,6 @@ namespace Library.Services.services
 
     {
 
-        // this is  book service
         private readonly IUnitOfWork <LibraryDbContext>_unitOfWork;
         private readonly IBookRepository _bookRepository;
         
