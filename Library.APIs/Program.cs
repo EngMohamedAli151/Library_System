@@ -18,6 +18,8 @@ namespace Library.APIs
             //independance injection
             builder.Services.AddScoped<IUnitOfWork<LibraryDbContext>, UnitOfWork<LibraryDbContext>>();
             builder.Services.AddScoped<IBookServices, BookServices>();
+            builder.Services.AddScoped<IAuthorServices, AuthorServices>();
+            builder.Services.AddScoped<ICategoriesServices, CategoryServices>();
             builder.Services.AddScoped<IBaseRepository<Book>, BaseRepository<Book>>();
             builder.Services.AddScoped<IBaseRepository<Author>, BaseRepository<Author>>();
             builder.Services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();

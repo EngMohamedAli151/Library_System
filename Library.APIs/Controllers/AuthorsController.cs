@@ -13,10 +13,11 @@ namespace Library.APIs.Controllers
     [ApiController]
     public class AuthorsController : ControllerBase
     {
-        private readonly IGenircServices<LibraryDbContext,IAuthorRepository,Author> _genircServices;
-        public AuthorsController(IGenircServices<LibraryDbContext, IAuthorRepository, Author> genircServices)
+        private readonly IAuthorServices _authorServices;
+        public AuthorsController(
+            IAuthorServices authorServices)
         {
-            _genircServices = genircServices;
+            _authorServices = authorServices;
         }
         //Select one Book
         [HttpGet("{id}")]
@@ -25,13 +26,13 @@ namespace Library.APIs.Controllers
             if (id == null)
             { return NotFound($"This Id={id}Not Exist"); }
             else { 
-            return Ok(_genircServices.GetById(id));}
+            return Ok(_authorServices.GetById(id));}
         }
         //Select All Author
         [HttpGet("GetAll")]
         public ActionResult GetAll() 
         {
-                return Ok(_genircServices.GetAll().ToList());
+                return Ok(_authorServices.GetAll().ToList());
         }
         //Create Of Author
         [HttpPost]
@@ -41,7 +42,7 @@ namespace Library.APIs.Controllers
             { 
                 FullName=dto.Name
             };
-            var add = _genircServices.Add(author);
+            var add = _authorServices.Add(author);
             return Ok(add);
         }
         //Create list of Author
@@ -57,7 +58,7 @@ namespace Library.APIs.Controllers
                 
                 authorList.Add(author);
             }
-            var addRange = _genircServices.AddRange(authorList);
+            var addRange = _authorServices.AddRange(authorList);
             return Ok(addRange);
         }
         //Upadte of Author Name
@@ -68,7 +69,7 @@ namespace Library.APIs.Controllers
             { return NotFound($"this id {id} not fount"); }
             else
             {
-                var author = _genircServices.GetById(id);
+                var author = _authorServices.GetById(id);
 
                 author.FullName = dto.Name ;
                 return Ok(author);
@@ -78,10 +79,10 @@ namespace Library.APIs.Controllers
         [HttpDelete]
         public IActionResult Delete(int id) 
         { 
-            var author= _genircServices.GetById(id);
+            var author= _authorServices.GetById(id);
             if (author == null)
                 return NotFound("Not Found");
-            author= _genircServices.Delete(id);
+            author= _authorServices.Delete(id);
            
             return Ok("autror deleted");
         }

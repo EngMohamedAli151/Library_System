@@ -12,16 +12,17 @@ namespace Library.APIs.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private readonly IGenircServices<LibraryDbContext, ICatogeryRepository, Category> _genircServices;
-        public CategoriesController(IGenircServices<LibraryDbContext, ICatogeryRepository, Category> genircServices)
+        private readonly ICategoriesServices _categoriesServices;
+        public CategoriesController(
+            ICategoriesServices categoriesServices)
         {
-            _genircServices = genircServices;
+            _categoriesServices = categoriesServices;
         }
 
         [HttpGet("id")]
         public IActionResult GetById(int id) 
         {
-         return Ok(_genircServices.GetById(id));
+         return Ok(_categoriesServices.GetById(id));
         }
         [HttpPost]
         public IActionResult Add(CategoryDto dto)
@@ -30,7 +31,7 @@ namespace Library.APIs.Controllers
             {
                 Name=dto.FullName
             };
-            category= _genircServices.Add(category);
+            category= _categoriesServices.Add(category);
              return Ok(category);
         }
         //Upadte of category Name
@@ -41,7 +42,7 @@ namespace Library.APIs.Controllers
             { return NotFound($"this id {id} not fount"); }
             else
             {
-                var category = _genircServices.GetById(id);
+                var category = _categoriesServices.GetById(id);
 
                 category.Name= dto.FullName;
                 return Ok(category);
@@ -51,10 +52,10 @@ namespace Library.APIs.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var category = _genircServices.GetById(id);
+            var category = _categoriesServices.GetById(id);
             if (category == null)
                 return NotFound("Not Found");
-            category = _genircServices.Delete(id);
+            category = _categoriesServices.Delete(id);
 
             return Ok("autror deleted");
         }
