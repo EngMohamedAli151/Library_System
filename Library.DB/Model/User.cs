@@ -15,7 +15,7 @@ namespace Library.DB.Model
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public List<UserBook> UserBooks { get; set; } = new List<UserBook>();
+        //public List<Order>? Orders { get; set; } 
         
     }
 }

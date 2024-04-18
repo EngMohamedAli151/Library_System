@@ -29,11 +29,9 @@ namespace Library.Services.services
 
         public Book Find(Expression<Func<Book, bool>> match, string[] includes = null)
         {
-
-            _bookRepository.Find(match, includes);
             if (match == null)
                 Console.WriteLine("not Found");
-           return  Find(match, includes);
+            return _bookRepository.Find(match, includes);
         }
 
         public IEnumerable<Book> FindAll(Expression<Func<Book, bool>> match, string[] includes = null)

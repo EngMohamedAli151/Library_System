@@ -1,7 +1,6 @@
 ﻿using Library.Reposatory.Impelmentation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
 using Library.Core.DTO;
 using Library.DB.Model;
 using Microsoft.Extensions.Options;
@@ -32,10 +31,10 @@ namespace Library.APIs.Controllers
             _bookServices=bookServices;
         }
         //GetById
-        [HttpGet("id")]
-        public IActionResult GetAll()
-        {
-            return Ok(_bookServices.Find(b => b.Title =="C++" , new[] { "Author" , "Category" }));
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id) { 
+           var book= (_bookServices.Find(b => b.Id == id,new string[] { "Author","Category","Orders"} ));
+            return Ok(book);
         }
         //GetAll
         [HttpGet]
@@ -47,7 +46,7 @@ namespace Library.APIs.Controllers
             }
             else
             {
-                return Ok(_bookServices.FindAll(b => b.Title == FilterName));
+                return Ok(_bookServices.FindAll(b => b.Title == FilterName, new[] { "Author", "Category", "Orders" }));
             }
         }
         //Add  Book
@@ -111,5 +110,11 @@ namespace Library.APIs.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetByAuthorId")]
+        public IActionResult GetByAuthorId(int authorId)
+        {
+            var book = (_bookServices.FindAll(b => b.AuthorId == authorId,new string[] { "Category","Orders"}));
+            return Ok(book);
+        }
     }
 }

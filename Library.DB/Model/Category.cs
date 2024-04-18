@@ -10,7 +10,7 @@ namespace Library.DB.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Book> Books { get;  } = new List<Book>();
+       // public ICollection<Book>? Books { get; } 
 
     }
 }

@@ -7,6 +7,7 @@ using Library.Services.Interface;
 using Library.Services.services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text.Json.Serialization;
 
 namespace Library.APIs
 {
@@ -27,7 +28,7 @@ namespace Library.APIs
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<ICatogeryRepository, CatogeryRepository>();
             builder.Services.AddScoped<UserRepository, UserRepository>();
-           
+            
             //Add connection string 
             var connectionString = builder.Configuration.GetConnectionString("Connection");
             builder.Services.AddDbContext<LibraryDbContext>(options =>
@@ -35,8 +36,9 @@ namespace Library.APIs
 
 
             // Add services to the container.
-
             builder.Services.AddControllers();
+                   
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

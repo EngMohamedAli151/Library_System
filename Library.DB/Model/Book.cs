@@ -15,12 +15,12 @@ namespace Library.DB.Model
 
         public int AuthorId { get; set; }
         [ForeignKey("AuthorId")]
-        public Author Author { get; set; } = null;
+        public Author Author { get; set; } 
 
         public int CatogoryId { get; set; }
         [ForeignKey("CatogoryId")]
-        public Category Category { get; set; } = null;
-        public List<UserBook> UserBooks { get; set; } = new List<UserBook>();
+        public Category Category { get; set; } 
+        public ICollection<Order>? Orders{ get; set; } 
 
         #region
         //[ForeignKey("UserID")]

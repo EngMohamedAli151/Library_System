@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Library.DB.Model
 {
-    public class UserBook
+    public class Order
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -18,6 +18,8 @@ namespace Library.DB.Model
         public User User { get; set; } = null!;
         public int BookId { get; set; }
         [ForeignKey("BookId")]
-        public Book Book { get; set; } = null!;
+       // public Book Book { get; set; } = null!;
+        public DateTime StartDate { get; set; }= DateTime.Now;
+        public DateTime EndtDate { get; set; }
     }
 }
