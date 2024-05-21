@@ -20,6 +20,7 @@ namespace Library.APIs
             builder.Services.AddScoped<IUnitOfWork<LibraryDbContext>, UnitOfWork<LibraryDbContext>>();
             builder.Services.AddScoped<IBookServices, BookServices>();
             builder.Services.AddScoped<IAuthorServices, AuthorServices>();
+            builder.Services.AddScoped<IUserServices,UserServices>();
             builder.Services.AddScoped<ICategoriesServices, CategoryServices>();
             builder.Services.AddScoped<IBaseRepository<Book>, BaseRepository<Book>>();
             builder.Services.AddScoped<IBaseRepository<Author>, BaseRepository<Author>>();

@@ -9,7 +9,7 @@ namespace Library.Reposatory.Impelmentation
 {
     public interface IBookRepository:IBaseRepository<Book>
     {
-        Book GetById (int id);
+        
         
     }
 }

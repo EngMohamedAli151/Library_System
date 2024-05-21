@@ -13,11 +13,13 @@ namespace Library.Reposatory.Repository
     public class UnitOfWork<T>: IUnitOfWork <T> where T : DbContext
     {
         private readonly LibraryDbContext _context;
+        #region
         //public IBaseRepository<Author> Author { get; private set; }
         //public IBaseRepository<Book> Books { get; private set; }
         //public IBaseRepository<User> Users { get; private set; }
         //public IBaseRepository<Category> Categories { get; private set; }
-       
+        #endregion
+
 
         public UnitOfWork(LibraryDbContext context)// IBaseRepository<Book> books, IBaseRepository<Author> author,IBaseRepository<Category> category)
         {

@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\Library.Core.csproj" />
+    <ProjectReference Include="..\Library.DB\Library.DB.csproj" />
     <ProjectReference Include="..\Library.Reposatory\Library.Reposatory.csproj" />
     <ProjectReference Include="..\Library.Services\Library.Services.csproj" />
   </ItemGroup>

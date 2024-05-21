@@ -33,7 +33,7 @@ namespace Library.APIs.Controllers
         //GetById
         [HttpGet("GetById")]
         public IActionResult GetById(int id) { 
-           var book= (_bookServices.Find(b => b.Id == id,new string[] { "Author","Category","Orders"} ));
+           var book= _bookServices.Find(b => b.Id == id,new string[] { "Author","Category","Orders"} );
             return Ok(book);
         }
         //GetAll
@@ -63,6 +63,7 @@ namespace Library.APIs.Controllers
             var add = _bookServices.Add(book);
             return Ok(add);
         }
+        #region AddRang
         //AddRange
         //[HttpPost("AddRange")]
         //public IActionResult AddRange(BookDto dto, IEnumerable<Book> entities)
@@ -78,7 +79,7 @@ namespace Library.APIs.Controllers
         //    return Ok(add);
 
         //}
-
+        #endregion
 
         //Upade Book
         [HttpPut("id")]

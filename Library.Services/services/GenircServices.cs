@@ -47,7 +47,11 @@ namespace Library.Services.services
             return _baseRepository.Remove(result); 
          
         }
-        //Get By Id
+        /// <summary>
+        /// Get By Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Model GetById(int id)
         {
             return _baseRepository .GetById(id);
